@@ -1,57 +1,49 @@
-:root {
-    --primary-color: #A0CCD8;
-    --secondary-color: #FBCDC4;   
-    --accent-color: #F5B97A;
-    --dark-color: #B2998F;
-}
+$primary: #A0CCD8;
+$secondary: #FBCDC4;
+$accent: #F5B97A;
+$dark: #B2998F;
 
 body {
     font-family: 'Nunito', sans-serif;
     scroll-behavior: smooth;
 }
 
+//Navbar styles
 .navbar {
     background-color: white;
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    transition: all 0.3s ease;
+    position: sticky;
+    
+    &-brand {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        font-weight: 800;
+        color: var(--primary-color);
+    }
+    
+    .nav-link {
+        text-decoration: none;
+        color: var(--dark-color);
+        font-weight: 600;
+        
+        &:hover {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+    }
 }
 
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    color: var(--primary-color) !important;
-}
-
-.nav-link {
-    color: var(--dark-color) !important;
-    font-weight: 600;
-}
-
-.nav-link:hover {
-    color: var(--primary-color) !important;
-}
-
+//Hero section
 .hero-section {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     padding: 6rem 0;
+    margin-top: 56px;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.btn-primary:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-}
-
-.btn-success {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-
+//Features section
 .feature-icon {
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -61,117 +53,282 @@ body {
 .section-title {
     position: relative;
     margin-bottom: 3rem;
+    
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+    }
 }
 
-.section-title:after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
+// Button styles
+.btn {
+  &-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  &-success {
     background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+
+    &:hover,
+    &:focus {
+      background-color: darken($accent, 12%);
+      border-color: darken($accent, 15%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &-outline-light {
+    border-color: white;
+    color: white;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(white, 0.1);
+      border-color: white;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Icon spacing
+  .fas {
+    margin-right: 0.5rem;
+  }
 }
 
-
-.testimonial-card {
-    border-left: 4px solid var(--primary-color);
-}
-
-footer {
-    background-color: #f8f9fc;
-    padding: 3rem 0;
-}
-
-.social-icon {
-    color: var(--dark-color);
-    font-size: 1.5rem;
-    margin: 0 10px;
-    transition: all 0.3s;
-}
-
-.social-icon:hover {
-    color: var(--primary-color);
-    transform: translateY(-3px);
-}
-
-.app-badge {
-    height: 50px;
-    margin: 10px;
-}
-
+//Carousel styles
 #screenshotCarousel {
     background-color: var(--dark-color);
-}
-
-.carousel-item img {
-    object-fit: contain;
-    height: 500px;
-    background-color: var(--dark-color);
-    padding: 1rem;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    width: auto;
-    opacity: 1;
-}
-
-.carousel-control-prev {
-    left: 1rem;
-}
-
-.carousel-control-next {
-    right: 1rem;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-size: 1.5rem;
-    width: 3rem;
-    height: 3rem;
-    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
-}
-
-@media (max-width: 992px) {
-    .carousel-item img {
-        height: 400px;
+    
+    .carousel-item {
+        transition: transform 1s ease-in-out;
     }
-}
 
-@media (max-width: 768px) {
     .carousel-item img {
-        height: 350px;
+        object-fit: contain;
+        height: 500px;
+        background-color: var(--dark-color);
+        padding: 1rem;
     }
     
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-        background-size: 1.25rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .carousel-item img {
-        height: 250px;
-        padding: 0.5rem;
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: auto;
+        opacity: 1;
+        
+        &-icon {
+            background-size: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+        }
     }
     
     .carousel-control-prev {
-        left: 0.5rem;
+        left: 1rem;
     }
     
     .carousel-control-next {
-        right: 0.5rem;
+        right: 1rem;
+    }
+}
+
+#reviews {
+  // Star ratings
+  .text-warning {
+    color: var(--accent-color); 
+  }
+  // User avatars
+  img {
+    border: 2px solid var(--accent-color);
+  }
+}
+
+//Footer styles
+footer {
+    background-color: #f8f9fc;
+    padding: 3rem 0;
+    
+    .social-icon {
+        color: var(--dark-color);
+        font-size: 1.5rem;
+        margin: 0 10px;
+        transition: all 0.3s;
+        
+        &:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+    }
+}
+
+// Responsive styles
+// Extra large devices (≥1200px)
+@media (max-width: 1200px) {
+  .hero-section {
+    padding: 5rem 0;
+    
+    h1.display-4 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    margin-bottom: 2rem;
+    
+    &::after {
+      width: 60px;
+    }
+  }
+}
+
+// Large devices (≥992px)
+@media (max-width: 992px) {
+  #screenshotCarousel .carousel-item img {
+    height: 400px;
+  }
+  
+  .hero-section {
+    .col-lg-6 {
+      text-align: center;
+      
+      &:last-child {
+        margin-top: 2rem;
+      }
+    }
+    
+    .d-flex {
+      justify-content: center;
+    }
+  }
+}
+
+// Medium devices (≥768px)
+@media (max-width: 768px) {
+  #screenshotCarousel {
+    .carousel-item img {
+      height: 350px;
     }
     
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-        width: 2rem;
-        height: 2rem;
-        background-size: 1rem;
-        padding: 1.5rem !important;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-size: 1.25rem;
     }
+  }
+  
+  .feature-icon {
+    font-size: 1.75rem;
+  }
+  
+  .btn-lg {
+    padding: 0.65rem 1.3rem;
+    font-size: 1.05rem;
+  }
+}
+
+// Small devices (≥576px)
+@media (max-width: 576px) {
+  #screenshotCarousel {
+    .carousel-item img {
+      height: 250px;
+      padding: 0.5rem;
+    }
+    
+    .carousel-control-prev {
+      left: 0.5rem;
+    }
+    
+    .carousel-control-next {
+      right: 0.5rem;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 2rem;
+      height: 2rem;
+      background-size: 1rem;
+    }
+  }
+  
+  .hero-section {
+    padding: 3.5rem 0 4rem;
+    margin-top: -56px;
+    
+    h1.display-4 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    p.lead {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 0.75rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    
+    &::after {
+      width: 50px;
+      height: 2px;
+    }
+  }
+}
+
+// Extra small devices (<400px)
+@media (max-width: 400px) {
+  .hero-section {
+    padding: 3rem 0;
+    
+    h1.display-4 {
+      font-size: 1.75rem;
+    }
+    
+    .btn-lg {
+      padding: 0.6rem 1rem;
+    }
+  }
+  
+  #screenshotCarousel .carousel-item img {
+    height: 200px;
+  }
 }
